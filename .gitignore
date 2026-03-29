@@ -1,0 +1,17 @@
+.DS_Store
+
+backend/.venv/
+backend/.env
+backend/__pycache__/
+backend/app/__pycache__/
+backend/simulator/__pycache__/
+
+patient-web/node_modules/
+patient-web/dist/
+
+doctor-web/node_modules/
+doctor-web/dist/
+
+anomaly-service/.venv/
+anomaly-service/__pycache__/
+anomaly-service/app/__pycache__/
