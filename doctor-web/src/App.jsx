@@ -234,7 +234,7 @@ function AuthScreen({ onAuthenticated }) {
         {error ? <div className="error">{error}</div> : null}
 
         {mode === "login" ? (
-          <form className="form-grid" onSubmit={onLogin}>
+          <form className="form-grid form-grid--login" onSubmit={onLogin}>
             <input
               type="email"
               placeholder="Email"

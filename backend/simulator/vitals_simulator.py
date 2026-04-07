@@ -16,15 +16,19 @@ PATIENTS_URL = f"{API_BASE}/api/device/patients"
 INGEST_URL = f"{API_BASE}/api/vitals/ingest"
 
 
+def _clamp(value: float, lo: float, hi: float) -> float:
+    return max(lo, min(hi, value))
+
+
 def build_normal_reading(patient_uid: str) -> Dict:
     return {
         "patient_uid": patient_uid,
-        "heart_rate": random.randint(65, 95),
-        "spo2": random.randint(95, 99),
-        "temperature_c": round(random.uniform(36.4, 37.4), 1),
-        "systolic_bp": random.randint(108, 128),
-        "diastolic_bp": random.randint(70, 84),
-        "respiratory_rate": random.randint(12, 18),
+        "heart_rate": int(_clamp(random.gauss(80, 5), 55, 105)),
+        "spo2": int(_clamp(random.gauss(97, 1), 93, 100)),
+        "temperature_c": round(_clamp(random.gauss(36.9, 0.25), 36.1, 37.6), 1),
+        "systolic_bp": int(_clamp(random.gauss(118, 5), 100, 138)),
+        "diastolic_bp": int(_clamp(random.gauss(77, 4), 62, 92)),
+        "respiratory_rate": int(_clamp(random.gauss(15, 1.5), 10, 22)),
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
